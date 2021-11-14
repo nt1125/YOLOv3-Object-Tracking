@@ -75,7 +75,8 @@ def main(_argv):
         frame_index = -1 
     
     fps = 0.0
-    count = 0 
+    count = 0
+    frameCount=0
     while True:
         _, img = vid.read()
 
@@ -147,12 +148,13 @@ def main(_argv):
                 for i in range(0,len(converted_boxes)):
                     list_file.write(str(converted_boxes[i][0]) + ' '+str(converted_boxes[i][1]) + ' '+str(converted_boxes[i][2]) + ' '+str(converted_boxes[i][3]) + ' ')
             list_file.write('\n')
-
+        print("Frame Count = ", frameCount)
+        frameCount += 1
         # press q to quit
 #         if cv2.waitKey(1) == ord('q'):
 #             break
     vid.release()
-    if FLAGS.ouput:
+    if FLAGS.output:
         out.release()
         list_file.close()
     cv2.destroyAllWindows()
